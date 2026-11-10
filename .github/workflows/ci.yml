@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches: [main, 'feature/**']
+  pull_request:
+    branches: [main]
+
+# Un push nuevo cancela la corrida anterior de la misma rama: lo que importa es
+# el estado de la cabeza, no el historial de corridas que ya nadie mira.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [20, 22]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+
+      - run: npm ci
+
+      # El compilador es el primer test: mide los tipos de src y de test a la vez,
+      # así que un test que compila con tipos imposibles no llega a verde.
+      - name: Typecheck (src + test)
+        run: npm run typecheck
+
+      - name: Build
+        run: npm run build
+
+      - name: Test
+        run: npm test

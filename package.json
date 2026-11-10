@@ -1,0 +1,21 @@
+{
+  "name": "licensegate-bulk-cli",
+  "version": "0.1.0",
+  "private": true,
+  "type": "commonjs",
+  "bin": {
+    "licensegate-bulk": "dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "ts-node src/cli.ts",
+    "typecheck": "tsc -p tsconfig.test.json",
+    "test": "TS_NODE_PROJECT=tsconfig.test.json node --test --require ts-node/register test/*.test.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^18.19.80",
+    "eslint": "^9.39.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  }
+}

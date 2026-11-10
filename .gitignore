@@ -1,0 +1,23 @@
+node_modules/
+dist/
+.env
+reports/
+.vs/
+examples/*
+!examples/template.*.json
+licenseKeyFiles/*
+.DS_Store
+
+# Datos de la tienda: códigos de descuento y contenido de correo
+licensing/catalog.json
+
+# Scripts de una sola vez (llevan IDs y rutas de la máquina)
+.tmp-*
+
+# Catálogo de productos, reportes y claves: fuera del repositorio público.
+licensing/
+reports/
+licenseKeyFiles/
+
+# Manual de operación: vive en el repositorio privado.
+.agents/
