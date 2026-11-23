@@ -276,7 +276,7 @@ effect; tag-vs-live-scope case/hyphen mismatch.
 ## Analysis notes
 
 - Scope and key matching are case-insensitive and trimmed; order refs normalize
-  `Order #1697` → `#1697`.
+  `Order #1234` → `#1234`.
 - A license appearing in neither the CSVs nor a scope is untouched.
 - If `plannedCount`/`targetCount` is 0, say so — do **not** invent a mutation.
 - Prefer reading `src/` and `README.md` over guessing; the source is the truth.
